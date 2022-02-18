@@ -44,11 +44,11 @@ cd diy-ml-p-pipelines
 
 # clear working folder
 echo ">>> Removing current deployment"
-rm -rf ~/$APP_PATH/$ENV/feature-store/*
+rm -rf ~/$APP_PATH/$ENV/pipelines/*
 
 # copy to working folder
-echo ">>> Dopying new files"
-cp -a src/. ~/$APP_PATH/$ENV/feature-store/
+echo ">>> Copying new files"
+cp -a src/. ~/$APP_PATH/$ENV/pipelines/
 
 # restart scheduler
 echo ">>> Applying changes"

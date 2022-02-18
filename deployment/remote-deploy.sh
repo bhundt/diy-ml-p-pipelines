@@ -35,28 +35,31 @@ ssh pi@diy-ml-p.local << EOF
 # Temp folder
 echo ">>> Create temp folder"
 cd ~/
-mkdir tmp_deploy_feature_store
-cd tmp_deploy_feature_store
+mkdir tmp_deploy_pipelines
+cd tmp_deploy_pipelines
 
 echo ">>> Cloning $BRANCH branch"
-git clone --branch $BRANCH https://github.com/bhundt/diy-ml-p-feature-store.git
-cd diy-ml-p-feature-store
+git clone --branch $BRANCH https://github.com/bhundt/diy-ml-p-pipelines.git
+cd diy-ml-p-pipelines
 
 # clear working folder
 echo ">>> Removing current deployment"
-rm -r ~/$APP_PATH/$ENV/feature-store/*
+rm -rf ~/$APP_PATH/$ENV/feature-store/*
 
 # copy to working folder
 echo ">>> Dopying new files"
 cp -a src/. ~/$APP_PATH/$ENV/feature-store/
 
-# feast apply
+# restart scheduler
 echo ">>> Applying changes"
-cd ~/$APP_PATH/$ENV/feature-store/
-feast apply
+sudo systemctl stop dagit
+sudo systemctl stop dagster
+sudo systemctl start dagster
+sudo systemctl start dagit
+cd ~/
 
 echo ">>> Removing temp files"
-rm -rf ~/tmp_deploy_feature_store/
+rm -rf ~/tmp_deploy_pipelines/
 exit
 EOF
 

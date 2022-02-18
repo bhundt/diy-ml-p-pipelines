@@ -1,0 +1,6 @@
+resources:
+  values:
+    config:
+      mlflow_tracking_url: "some url"
+      feature_store_path: "~/app/dev/date/features/
+      some_value: 10

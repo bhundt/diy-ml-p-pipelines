@@ -8,5 +8,5 @@ running_schedule = ScheduleDefinition(
 )
 
 @repository
-def get_dev_repos():
+def get_jobs():
     return [hello_world_job, deploy_job, running_schedule]

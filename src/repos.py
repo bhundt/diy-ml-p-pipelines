@@ -16,5 +16,5 @@ def get_etl_jobs():
 
 @repository
 def get_ops_jobs():
-    return [hello_world_job,
-            running_schedule]
+    return [deploy_job,
+            shell_job]

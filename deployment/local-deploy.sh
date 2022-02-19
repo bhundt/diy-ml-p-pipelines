@@ -39,5 +39,6 @@ cp config.$DIY_ML_P_ENVIRONMENT.yaml config.yaml
 rm config.dev.yaml
 rm config.staging.yaml
 rm config.prod.yaml
+rm config.local.yaml
 
 # TODO: execute dagster

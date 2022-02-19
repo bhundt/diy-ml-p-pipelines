@@ -3,7 +3,8 @@ import os
 from dagster import job, op
 from dagster.utils import file_relative_path
 
-from utils import get_environment_config
+#from utils import get_environment_config
+from utils.utils import get_environment_config
 
 @op
 def hello():

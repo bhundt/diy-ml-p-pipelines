@@ -1,6 +1,6 @@
 from dagster import repository, ScheduleDefinition, DefaultScheduleStatus
 
-from playground import hello_world_job
+from playground_job import hello_world_job
 from ops.deploy import deploy_job
 from ops.shell_test import shell_job
 
@@ -10,8 +10,11 @@ running_schedule = ScheduleDefinition(
 )
 
 @repository
-def get_jobs():
+def get_etl_jobs():
     return [hello_world_job, 
-            deploy_job, 
-            shell_job,
+            running_schedule]
+
+@repository
+def get_ops_jobs():
+    return [hello_world_job,
             running_schedule]

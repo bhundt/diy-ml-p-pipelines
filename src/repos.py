@@ -2,7 +2,7 @@
 from dagster import ModeDefinition, repository, ScheduleDefinition, DefaultScheduleStatus, JobDefinition
 
 from utils.helper import make_job_from_graph
-from playground_job import hello_world_job, test_graph_job
+from playground_job import hello_world_job
 
 # ops
 from ops.deploy import deploy_job

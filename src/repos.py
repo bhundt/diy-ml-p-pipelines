@@ -1,7 +1,8 @@
 # Test with: dagster job execute -f ../../app/local/pipelines/etl/retrieve_stock_market_indicators_job.py -d ../../app/local/pipelines/
-from dagster import repository, ScheduleDefinition, DefaultScheduleStatus
+from dagster import ModeDefinition, repository, ScheduleDefinition, DefaultScheduleStatus, JobDefinition
 
-from playground_job import hello_world_job
+from utils.helper import make_job_from_graph
+from playground_job import hello_world_job, test_graph_job
 
 # ops
 from ops.deploy import deploy_job
@@ -12,12 +13,13 @@ from etl.retrieve_stock_market_indicators_job import retrieve_stock_market_indic
 
 # scheduled pipelines
 running_schedule = ScheduleDefinition(
-    job=hello_world_job, cron_schedule="*/3 * * * *", default_status=DefaultScheduleStatus.RUNNING
+    job=make_job_from_graph(hello_world_job), cron_schedule="*/3 * * * *", default_status=DefaultScheduleStatus.RUNNING
 )
 
 @repository
 def get_etl_jobs():
-    return [hello_world_job, running_schedule,
+    test_graph_job.to_job(name=test_graph_job.__name__ + "_dev")
+    return [make_job_from_graph(hello_world_job), running_schedule,
             retrieve_stock_market_indicators_job, retrieve_stock_market_indicators_job_schedule]
 
 @repository

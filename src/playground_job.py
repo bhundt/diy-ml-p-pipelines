@@ -1,6 +1,6 @@
 # execute with dagster job execute -f <FILE> -d <PATH OF FILE / WORKING DIR>
 import os
-from dagster import job, op
+from dagster import job, op, graph
 from dagster.utils import file_relative_path
 
 #from utils import get_environment_config
@@ -13,6 +13,6 @@ def hello():
     print(file_relative_path(__file__, './environments/schedules.yaml'))
     print(get_environment_config())
 
-@job(tags={'key':'value'})
+@graph
 def hello_world_job():
     hello()

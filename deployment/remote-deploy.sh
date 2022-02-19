@@ -26,11 +26,15 @@ fi
 
 # push changes
 echo ">>> Pushing $1 to GitHub"
-git push origin $BRANCH
+if ! git push origin $BRANCH
+then
+    echo 'Failed to push to GitHub!'
+    exit 1
+fi
 
 # Log in to DIY-ML-P
 echo ">>> Log into DIY-ML-P"
-ssh pi@diy-ml-p.local << EOF
+if ! ssh pi@diy-ml-p.local << EOF
 
 # Temp folder
 echo ">>> Create temp folder"
@@ -39,7 +43,11 @@ mkdir tmp_deploy_pipelines
 cd tmp_deploy_pipelines
 
 echo ">>> Cloning $BRANCH branch"
-git clone --branch $BRANCH https://github.com/bhundt/diy-ml-p-pipelines.git
+if ! git clone --branch $BRANCH https://github.com/bhundt/diy-ml-p-pipelines.git
+then
+    echo "Failed to clone repo from GitHub"
+    exit 1
+fi
 cd diy-ml-p-pipelines
 
 # clear working folder
@@ -70,5 +78,9 @@ echo ">>> Removing temp files"
 rm -rf ~/tmp_deploy_pipelines/
 exit
 EOF
+then
+    echo "Failed to ssh into server!"
+    exit 1
+fi
 
 echo ">>> ...Done!"

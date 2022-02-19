@@ -1,4 +1,3 @@
-import os
 from dagster import job, op
 
 from utils.config import get_environment_config

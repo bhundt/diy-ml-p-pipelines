@@ -1,4 +1,4 @@
-from dagster import job, op
+from dagster import graph, op
 
 from utils.config import get_environment_config
 
@@ -7,6 +7,6 @@ def deploy_stuff():
     print("Deploy something!")
     print(get_environment_config())
 
-@job
+@graph
 def deploy_job():
     deploy_stuff()

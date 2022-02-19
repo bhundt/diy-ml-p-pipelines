@@ -60,7 +60,7 @@ cp -a src/. ~/$APP_PATH/$ENV/pipelines/
 
 # installing config file
 echo ">>> Installing config file for environment"
-cd  ~/$APP_PATH/$ENV/pipelines/
+cd  ~/$APP_PATH/$ENV/pipelines/conf/
 cp config.$ENV.yaml config.yaml
 rm config.dev.yaml
 rm config.staging.yaml

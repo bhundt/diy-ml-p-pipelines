@@ -34,7 +34,7 @@ echo ">> Performing new deployment"
 cp -a src/. $DIY_ML_P_REL_DEPLOY_PATH/$DIY_ML_P_ENVIRONMENT/pipelines/
 
 echo ">> Installing config file for environment"
-cd $DIY_ML_P_REL_DEPLOY_PATH/$DIY_ML_P_ENVIRONMENT/pipelines/
+cd $DIY_ML_P_REL_DEPLOY_PATH/$DIY_ML_P_ENVIRONMENT/pipelines/conf/
 cp config.$DIY_ML_P_ENVIRONMENT.yaml config.yaml
 rm config.dev.yaml
 rm config.staging.yaml

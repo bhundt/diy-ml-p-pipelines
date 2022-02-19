@@ -18,7 +18,6 @@ running_schedule = ScheduleDefinition(
 
 @repository
 def get_etl_jobs():
-    test_graph_job.to_job(name=test_graph_job.__name__ + "_dev")
     return [make_job_from_graph(hello_world_job), running_schedule,
             retrieve_stock_market_indicators_job, retrieve_stock_market_indicators_job_schedule]
 

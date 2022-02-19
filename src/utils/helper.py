@@ -1,5 +1,5 @@
 from dagster import graph
-from config import get_environment_config
+from .config import get_environment_config
 
 def make_job_from_graph(graph):
 	env = get_environment_config()['env']

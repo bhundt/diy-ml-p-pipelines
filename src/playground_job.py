@@ -13,6 +13,6 @@ def hello():
     print(file_relative_path(__file__, './environments/schedules.yaml'))
     print(get_environment_config())
 
-@job
+@job(tags={'key':'value'})
 def hello_world_job():
     hello()

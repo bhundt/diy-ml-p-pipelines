@@ -5,6 +5,7 @@ This repository holds all pipelines deployed to my DIY machine learning plattfor
 ```
 repository/
 ├─ deployment/
+├─ utils/
 ├─ src/
 │  ├─ etl/
 │  ├─ ops/
@@ -12,6 +13,7 @@ repository/
 |  ├─ config.ENV.yaml
 ```
 - `deployment/`: scripts for local and remote deployment.
+- `utils/`: some helper to read environment configuration as well as crating jobs.
 - `src/etl`: files describing pipelines which performan data ingestion, transformation, ...
 - `src/ops`: files describing pipelines which performan operations pipelines like deployments, ...
 - `src/repos.py`: exports all pipelines to dagster.

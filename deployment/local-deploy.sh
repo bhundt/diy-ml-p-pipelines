@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # settings
-DIY_ML_P_ENVIRONMENT=$1
+DIY_ML_P_ENVIRONMENT=local
 DIY_ML_P_REL_DEPLOY_PATH=../../app
 
 # check input
@@ -10,10 +10,10 @@ if [[ $# -eq 0 ]] ; then
     exit 1
 fi
 
-if [[ "$1" =~ ^(dev)$ ]]; then
+if [[ "$1" =~ ^(local)$ ]]; then
     echo ">>> Deploying: $1"
 else
-    echo "Wrong environment given! Deployment to dev locally only!"
+    echo "Wrong environment given! Deployment locally only!"
 	exit 1
 fi
 

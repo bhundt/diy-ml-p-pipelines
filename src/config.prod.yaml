@@ -1,4 +1,4 @@
 config:
   env: prod
-  feature_store_path: "../data/features/"
-  raw_data_path: "../data/raw/"
+  feature_store_path: "~/app/prod/data/features/"
+  raw_data_path: "~/app/prod/data/raw/"

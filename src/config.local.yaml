@@ -1,0 +1,4 @@
+config:
+  env: local
+  feature_store_path: "/Users/bhundt/Documents/01 Basti/Interessen/Machine Learning/05 DIY-ML-P/app/local/feature-store"
+  raw_data_path: "/Users/bhundt/Documents/01 Basti/Interessen/Machine Learning/05 DIY-ML-P/app/local/data/raw"

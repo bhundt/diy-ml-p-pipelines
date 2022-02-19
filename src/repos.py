@@ -1,3 +1,4 @@
+# Test with: dagster job execute -f ../../app/local/pipelines/etl/retrieve_stock_market_indicators_job.py -d ../../app/local/pipelines/
 from dagster import repository, ScheduleDefinition, DefaultScheduleStatus
 
 from playground_job import hello_world_job

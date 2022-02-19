@@ -1,7 +1,7 @@
 import os
 from dagster import job, op
 
-from utils.utils import get_environment_config
+from utils.config import get_environment_config
 
 @op
 def deploy_stuff():

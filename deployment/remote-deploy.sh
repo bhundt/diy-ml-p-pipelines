@@ -50,6 +50,14 @@ rm -rf ~/$APP_PATH/$ENV/pipelines/*
 echo ">>> Copying new files"
 cp -a src/. ~/$APP_PATH/$ENV/pipelines/
 
+# installing config file
+echo ">>> Installing config file for environment"
+cd  ~/$APP_PATH/$ENV/pipelines/
+cp config.$ENV.yaml config.yaml
+rm config.dev.yaml
+rm config.staging.yaml
+rm config.prod.yaml
+
 # restart scheduler
 echo ">>> Applying changes"
 sudo systemctl stop dagit

@@ -1,4 +1,3 @@
 config:
   env: dev
-  mlflow_tracking_url: "https://..."
   feature_store_path: "~/app/dev/data/features/"

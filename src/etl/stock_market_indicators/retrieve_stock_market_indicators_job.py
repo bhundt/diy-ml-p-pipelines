@@ -66,8 +66,5 @@ retrieve_stock_market_indicators_job_schedule = ScheduleDefinition(
     job=make_job(retrieve_stock_market_indicators), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
 )
 
-def get_jobs():
-    return [make_job(retrieve_stock_market_indicators)]
-
-def get_scheduels():
-    return [retrieve_stock_market_indicators_job_schedule]
+def get_elements():
+    return [make_job(retrieve_stock_market_indicators), retrieve_stock_market_indicators_job_schedule]

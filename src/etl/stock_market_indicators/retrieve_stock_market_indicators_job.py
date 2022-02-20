@@ -59,15 +59,15 @@ def append_new_data_to_storage(data):
     final.to_csv(data_path, index=False)
 
 @graph
-def retrieve_stock_market_indicators_job():
+def retrieve_stock_market_indicators():
     append_new_data_to_storage(retrieve_new_stock_market_data())
 
 retrieve_stock_market_indicators_job_schedule = ScheduleDefinition(
-    job=make_job(retrieve_stock_market_indicators_job), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
+    job=make_job(retrieve_stock_market_indicators), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
 )
 
 def get_jobs():
-    return [make_job(retrieve_stock_market_indicators_job)]
+    return [make_job(retrieve_stock_market_indicators)]
 
 def get_scheduels():
     return [retrieve_stock_market_indicators_job_schedule]

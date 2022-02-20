@@ -3,6 +3,7 @@
 # settings
 DIY_ML_P_ENVIRONMENT=local
 DIY_ML_P_REL_DEPLOY_PATH=../../app
+DAGSTER_LOCAL_FOLDER=../../dagster/
 
 # check input
 if [[ $# -eq 0 ]] ; then
@@ -41,4 +42,9 @@ rm config.staging.yaml
 rm config.prod.yaml
 rm config.local.yaml
 
-# TODO: execute dagster
+# execute dagster
+cd ../../../../dagster
+dagit &
+sleep 3
+open http://127.0.0.1:3000
+echo "Use pid from above to kill the dagster server"

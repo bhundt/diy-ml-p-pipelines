@@ -19,8 +19,7 @@ running_schedule = ScheduleDefinition(
 
 @repository
 def get_etl_jobs():
-    #all_etl_jobs = []
-    all_etl_jobs = [].extend( [make_job(hello_world_job), running_schedule] )
+    all_etl_jobs = [make_job(hello_world_job), running_schedule]
     all_etl_jobs.extend( retrieve_stock_market_indicators_job.get_elements() )
 
     return all_etl_jobs

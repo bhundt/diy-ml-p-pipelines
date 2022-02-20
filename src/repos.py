@@ -9,23 +9,24 @@ from ops.deploy import deploy_job
 from ops.shell_test import shell_job
 
 # etl jobs
-from etl.retrieve_stock_market_indicators_job import retrieve_stock_market_indicators_job
+from etl.stock_market_indicators import retrieve_stock_market_indicators_job
 
-# scheduled pipelines
+# schedule pipelines
 running_schedule = ScheduleDefinition(
     job=make_job(hello_world_job), cron_schedule="*/3 * * * *", default_status=DefaultScheduleStatus.RUNNING
 )
 
-retrieve_stock_market_indicators_job_schedule = ScheduleDefinition(
-    job=make_job(retrieve_stock_market_indicators_job), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
-)
 
 @repository
 def get_etl_jobs():
     return [make_job(hello_world_job), running_schedule,
-            make_job(retrieve_stock_market_indicators_job), retrieve_stock_market_indicators_job_schedule]
+            retrieve_stock_market_indicators_job.get_jobs(), retrieve_stock_market_indicators_job.get_scheduels()]
 
 @repository
 def get_ops_jobs():
     return [make_job(deploy_job),
             make_job(shell_job)]
+
+@repository
+def get_ml_jobs():
+    return []

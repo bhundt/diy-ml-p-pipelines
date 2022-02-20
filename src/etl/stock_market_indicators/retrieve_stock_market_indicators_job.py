@@ -4,9 +4,10 @@ from datetime import datetime, timedelta
 
 import yfinance as yf
 import pandas as pd
-from dagster import graph, op
+from dagster import graph, op, ScheduleDefinition
 
 from utils.config import get_environment_config
+from utils.helper import make_job
 
 @op
 def retrieve_new_stock_market_data():
@@ -60,3 +61,13 @@ def append_new_data_to_storage(data):
 @graph
 def retrieve_stock_market_indicators_job():
     append_new_data_to_storage(retrieve_new_stock_market_data())
+
+retrieve_stock_market_indicators_job_schedule = ScheduleDefinition(
+    job=make_job(retrieve_stock_market_indicators_job), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
+)
+
+def get_jobs():
+    return [make_job(retrieve_stock_market_indicators_job)]
+
+def get_scheduels():
+    return [retrieve_stock_market_indicators_job_schedule]

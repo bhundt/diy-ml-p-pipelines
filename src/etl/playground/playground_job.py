@@ -23,4 +23,4 @@ running_schedule = ScheduleDefinition(
 )
 
 def get_elements():
-    return [make_job(hello_world), running_schedule]
+    return [make_job(hello_world)]

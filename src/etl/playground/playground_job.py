@@ -36,4 +36,4 @@ def hello_world():
 
 def get_elements():
     #return [hello_world.to_job(resource_defs={"values": make_values_resource(my_str=str, my_int=int)})]
-    return [make_job(hello_world, resource_defs={"values": make_values_resource(my_str=str, my_int=int)})]
+    return [make_job(hello_world, resource_def={"values": make_values_resource(my_str=str, my_int=int)})]

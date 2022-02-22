@@ -43,8 +43,4 @@ rm config.prod.yaml
 rm config.local.yaml
 
 # execute dagster
-cd ../../../../dagster
-dagit &
-sleep 3
-open http://127.0.0.1:3000
-echo "Use pid from above to kill the dagster server"
+echo "...Done!"

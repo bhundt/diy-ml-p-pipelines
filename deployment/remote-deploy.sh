@@ -67,11 +67,11 @@ rm config.staging.yaml
 rm config.prod.yaml
 
 # restart scheduler
-echo ">>> Applying changes"
-sudo systemctl stop dagit
-sudo systemctl stop dagster
-sudo systemctl start dagster
-sudo systemctl start dagit
+#echo ">>> Applying changes"
+#sudo systemctl stop dagit
+#sudo systemctl stop dagster
+#sudo systemctl start dagster
+#sudo systemctl start dagit
 cd ~/
 
 echo ">>> Removing temp files"

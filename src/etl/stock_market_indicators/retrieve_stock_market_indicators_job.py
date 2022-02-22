@@ -52,7 +52,7 @@ def append_new_data_to_storage(data):
     data = pd.DataFrame(data)
     try:
         existing = pd.read_csv(data_path)
-        final = existing.append(data)
+        final = pd.concat([existing, data], ignore_index=True)
     except:
         final = data
 
@@ -63,7 +63,7 @@ def retrieve_stock_market_indicators():
     append_new_data_to_storage(retrieve_new_stock_market_data())
 
 retrieve_stock_market_indicators_job_schedule = ScheduleDefinition(
-    job=make_job(retrieve_stock_market_indicators), cron_schedule="0 6 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
+    job=make_job(retrieve_stock_market_indicators), cron_schedule="0 22 * * 2-6", default_status=DefaultScheduleStatus.RUNNING
 )
 
 def get_elements():

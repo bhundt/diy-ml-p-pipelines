@@ -6,6 +6,7 @@ from utils.helper import make_job
 # ops jobs
 from ops.deploy import deploy_job
 from ops.shell_test import shell_job
+from docker_build import docker_build
 
 # etl jobs
 from etl.playground import playground_job
@@ -22,8 +23,11 @@ def get_etl_jobs():
 
 @repository
 def get_ops_jobs():
-    return [make_job(deploy_job),
-            make_job(shell_job)]
+    all_ops_jobs = []
+    all_ops_jobs.extend( [make_job(deploy_job), make_job(shell_job)] )
+    all_ops_jobs.extend( docker_build.get_elements() )
+
+    return all_ops_jobs
 
 @repository
 def get_ml_jobs():

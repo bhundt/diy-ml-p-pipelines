@@ -1,4 +1,4 @@
 config:
   env: staging
-  feature_store_path: "~/app/staging/data/features/"
-  raw_data_path: "~/app/staging/data/raw/"
+  feature_store_path: "/app/staging/data/features/"
+  raw_data_path: "/app/staging/data/raw/"

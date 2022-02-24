@@ -1,4 +1,4 @@
 config:
   env: local
-  feature_store_path: "/app/local/feature-store"
-  raw_data_path: "/local/data/raw"
+  feature_store_path: "/app/local/feature-store/"
+  raw_data_path: "/local/data/raw/"
